@@ -3,27 +3,11 @@
 import React from 'react';
 import AppointmentCard from '../components/AppointmentCard';
 import '../styles/PatientDashboard.css';
-
+import { appointments } from '../mocks/mockData';
 function PatientDashboard() {
-  // Soft dummy appointments list for now
-  const appointments = [
-    {
-      id: 1,
-      doctorName: "Dr. Emily Rose",
-      specialty: "Dermatologist",
-      date: "2024-07-05",
-      daysLeft: 8,
-      options: ["Request Cancel", "Request Reschedule"]
-    },
-    {
-      id: 2,
-      doctorName: "Dr. Adam Blake",
-      specialty: "Cardiologist",
-      date: "2024-07-10",
-      daysLeft: 13,
-      options: ["Request Cancel", "Request Reschedule"]
-    }
-  ];
+  const patientAppointments = appointments.filter(
+    appt => appt.patientId === "1001" // Replace with logged-in patient's ID
+  );
 
   return (
     <div className="patient-dashboard-container">
@@ -37,7 +21,7 @@ function PatientDashboard() {
             subtitle={appt.specialty}
             date={appt.date}
             daysLeft={appt.daysLeft}
-            options={appt.options}
+            role="patient"
           />
         ))}
       </div>

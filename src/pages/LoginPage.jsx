@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import '../styles/LoginPage.css';
 import { useNavigate } from 'react-router-dom';
-
+import {users} from '../mocks/mockData';
 function LoginPage() {
   const [identifier, setIdentifier] = useState('');
   const [password, setPassword] = useState('');
@@ -11,23 +11,11 @@ function LoginPage() {
 
   const handleLogin = (e) => {
     e.preventDefault();
-
-    // Simulated role check — this will later be connected to your database!
-    const fakeUsers = {
-      "123": { role: "patient" },
-      "456": { role: "doctor" },
-      "789": { role: "admin" },
-      "999": { role: "it" }
-    };
-
-    if (fakeUsers[identifier]) {
-      const userRole = fakeUsers[identifier].role;
-      console.log(`Logging in as ${userRole}`);
-
-      if (userRole === "patient") navigate("/patient-dashboard");
-      else if (userRole === "doctor") navigate("/doctor-dashboard");
-      else if (userRole === "admin") navigate("/admin-dashboard");
-      else if (userRole === "it") navigate("/it-dashboard");
+    const user = users.find(u => u.id === identifier && u.password === password);
+    
+    if (user) {
+      console.log(`Logging in as ${user.role}`);
+      navigate(`/${user.role}-dashboard`);
     } else {
       alert("Invalid credentials. Please try again.");
     }

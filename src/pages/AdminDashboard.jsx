@@ -3,22 +3,9 @@
 import React from 'react';
 import AppointmentCard from '../components/AppointmentCard'; // Reusing again!
 import '../styles/AdminDashboard.css';
-
+import { doctors } from '../mocks/mockData';
 function AdminDashboard() {
-  const doctors = [
-    {
-      id: 1,
-      name: "Dr. Emily Rose",
-      specialty: "Dermatologist",
-      joinDate: "2022-03-01"
-    },
-    {
-      id: 2,
-      name: "Dr. Adam Blake",
-      specialty: "Cardiologist",
-      joinDate: "2021-08-15"
-    }
-  ];
+  
 
   return (
     <div className="admin-dashboard-container">
@@ -32,7 +19,7 @@ function AdminDashboard() {
             subtitle={doc.specialty}
             date={`Joined: ${doc.joinDate}`}
             daysLeft={"N/A"}
-            options={["Suspend Doctor"]}
+            role="admin"
           />
         ))}
       </div>
