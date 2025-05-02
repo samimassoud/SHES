@@ -20,8 +20,29 @@ function DoctorProfileModal({ doctor, onClose }) {
     <div className="modal-overlay">
       <div className="doctor-profile-modal">
         <h2>Edit Doctor Profile</h2>
-        
+        <button className="close-button" onClick={onClose}>×</button>
+
         <form className="modal-form">
+          {/* Read-only Fields */}
+          <div className="form-group">
+            <label>Doctor ID</label>
+            <input
+              value={editedDoctor.id}
+              readOnly
+              className="read-only-field"
+            />
+          </div>
+
+          <div className="form-group">
+            <label>Join Date</label>
+            <input
+              value={new Date(editedDoctor.joinDate).toLocaleDateString()}
+              readOnly
+              className="read-only-field"
+            />
+          </div>
+
+          {/* Editable Fields */}
           <div className="form-group">
             <label htmlFor="name">Full Name</label>
             <input
@@ -44,7 +65,19 @@ function DoctorProfileModal({ doctor, onClose }) {
             />
           </div>
 
-          {/* Add more fields as needed */}
+          <div className="form-group">
+            <label htmlFor="rating">Rating (1-5)</label>
+            <input
+              id="rating"
+              type="number"
+              name="rating"
+              min="1"
+              max="5"
+              step="0.1"
+              value={editedDoctor.rating}
+              onChange={handleChange}
+            />
+          </div>
 
           <div className="modal-actions">
             <button type="button" className="close-button" onClick={onClose}>
