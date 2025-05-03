@@ -1,65 +1,36 @@
 import React, { useState, useRef, useEffect } from 'react';
 import BotMessage from './BotMessage';
-import SymptomAnalyzer from './SymptomMapper';
+import SymptomAnalyzer from './SymptomAnalyzer';
 import './Diagnosis-bot.css';
 
 const DiagnosisBot = ({ onBookAppointment }) => {
-    const [messages, setMessages] = useState([
-      { 
-        text: "Hello! Please describe your symptoms.", // Default English
-        sender: 'bot',
-        isDiagnosis: false 
-      }
-    ]);
-    const [inputValue, setInputValue] = useState('');
-    const messagesEndRef = useRef(null);
+  const [messages, setMessages] = useState([
+    { 
+      text: "Hello! I'm your medical assistant. Please describe your symptoms in detail.",
+      sender: 'bot',
+      isDiagnosis: false 
+    }
+  ]);
+  const [inputValue, setInputValue] = useState('');
+  const messagesEndRef = useRef(null);
+  const [analyzer] = useState(new SymptomAnalyzer());
 
   // Auto-scroll to bottom
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
-  const [analyzer] = useState(new SymptomAnalyzer());
-
-// const handleSend = () => {
-//   if (!inputValue.trim()) return;
-
-//   // Add user message
-//   setMessages(prev => [...prev, { 
-//     text: inputValue, 
-//     sender: 'user' 
-//   }]);
-//   setInputValue('');
-
-//   // Get bot response
-//   setTimeout(() => {
-//     const response = analyzer.analyzeInput(inputValue);
-    
-//     setMessages(prev => [...prev, {
-//       text: response.text,
-//       sender: 'bot',
-//       isQuestion: response.isQuestion,
-//       ...(response.isDiagnosis && {
-//         isDiagnosis: true,
-//         reasoning: response.reasoning,
-//         specialty: response.specialty
-//       })
-//     }]);
-//   }, 1000);
-// };
-
-const handleSend = () => {
+  const handleSend = async () => {
     if (!inputValue.trim()) return;
-  
+
     // Add user message
     const userMessage = { text: inputValue, sender: 'user' };
     setMessages(prev => [...prev, userMessage]);
     setInputValue('');
-  
+
     // Process response
-    setTimeout(() => {
-      const response = analyzer.analyzeInput(inputValue);
-      
+    try {
+      const response = await analyzer.analyzeInput(inputValue);
       const botMessage = {
         text: response.text,
         sender: 'bot',
@@ -70,20 +41,21 @@ const handleSend = () => {
           specialty: response.specialty
         })
       };
-  
+
       setMessages(prev => [...prev, botMessage]);
-  
-      // Auto-scroll to bottom
-      setTimeout(() => {
-        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-      }, 50);
-    }, 1000);
+    } catch (error) {
+      console.error("Error analyzing symptoms:", error);
+      setMessages(prev => [...prev, {
+        text: "I encountered an error processing your symptoms. Please try again.",
+        sender: 'bot',
+        isDiagnosis: false
+      }]);
+    }
   };
 
   const handleClear = () => {
-    analyzer.reset();
     setMessages([{ 
-      text: "Hello! Please describe your symptoms.", 
+      text: "Hello! I'm your medical assistant. Please describe your symptoms in detail.",
       sender: 'bot',
       isDiagnosis: false 
     }]);
