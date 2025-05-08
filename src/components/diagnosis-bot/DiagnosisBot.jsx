@@ -8,12 +8,14 @@ const DiagnosisBot = ({ onBookAppointment }) => {
     { 
       text: "Hello! I'm your medical assistant. Please describe your symptoms in detail.",
       sender: 'bot',
-      isDiagnosis: false 
+      isDiagnosis: false,
+      isQuestion: false
     }
   ]);
   const [inputValue, setInputValue] = useState('');
   const messagesEndRef = useRef(null);
   const [analyzer] = useState(new SymptomAnalyzer());
+  const [awaitingAnswer, setAwaitingAnswer] = useState(false);
 
   // Auto-scroll to bottom
   useEffect(() => {
@@ -21,10 +23,13 @@ const DiagnosisBot = ({ onBookAppointment }) => {
   }, [messages]);
 
   const handleSend = async () => {
-    if (!inputValue.trim()) return;
+    if (!inputValue.trim() && !awaitingAnswer) return;
 
     // Add user message
-    const userMessage = { text: inputValue, sender: 'user' };
+    const userMessage = { 
+      text: awaitingAnswer ? `Answer: ${inputValue}` : inputValue, 
+      sender: 'user' 
+    };
     setMessages(prev => [...prev, userMessage]);
     setInputValue('');
 
@@ -43,22 +48,34 @@ const DiagnosisBot = ({ onBookAppointment }) => {
       };
 
       setMessages(prev => [...prev, botMessage]);
+      setAwaitingAnswer(response.isQuestion);
     } catch (error) {
       console.error("Error analyzing symptoms:", error);
       setMessages(prev => [...prev, {
         text: "I encountered an error processing your symptoms. Please try again.",
         sender: 'bot',
-        isDiagnosis: false
+        isDiagnosis: false,
+        isQuestion: false
       }]);
+      setAwaitingAnswer(false);
     }
   };
 
+  const handleAnswerQuestion = (answer) => {
+    setInputValue(answer);
+    setAwaitingAnswer(false);
+    handleSend();
+  };
+
   const handleClear = () => {
+    analyzer.resetConversation();
     setMessages([{ 
       text: "Hello! I'm your medical assistant. Please describe your symptoms in detail.",
       sender: 'bot',
-      isDiagnosis: false 
+      isDiagnosis: false,
+      isQuestion: false
     }]);
+    setAwaitingAnswer(false);
   };
 
   return (
@@ -69,6 +86,7 @@ const DiagnosisBot = ({ onBookAppointment }) => {
             key={i} 
             message={msg}
             onBookAppointment={onBookAppointment}
+            onAnswerQuestion={handleAnswerQuestion}
           />
         ))}
         <div ref={messagesEndRef} />
@@ -80,18 +98,27 @@ const DiagnosisBot = ({ onBookAppointment }) => {
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
           onKeyPress={(e) => e.key === 'Enter' && handleSend()}
-          placeholder="Describe your symptoms..."
+          placeholder={awaitingAnswer ? "Answer the question..." : "Describe your symptoms..."}
+          disabled={awaitingAnswer}
         />
-        <button 
-          className="clear-btn"
-          onClick={handleClear}
-          title="Clear conversation"
-        >
-          ×
-        </button>
-        <button className="send-btn" onClick={handleSend}>
-          Send
-        </button>
+        {awaitingAnswer ? (
+          <button className="send-btn" onClick={handleSend}>
+            Submit
+          </button>
+        ) : (
+          <>
+            <button 
+              className="clear-btn"
+              onClick={handleClear}
+              title="Clear conversation"
+            >
+              ×
+            </button>
+            <button className="send-btn" onClick={handleSend}>
+              Send
+            </button>
+          </>
+        )}
       </div>
     </div>
   );
