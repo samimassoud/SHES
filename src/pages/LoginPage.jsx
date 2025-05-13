@@ -1,19 +1,23 @@
 // src/pages/LoginPage.js
 
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import '../styles/LoginPage.css';
 import { useNavigate } from 'react-router-dom';
 import {users} from '../mocks/mockData';
+import { AuthContext } from '../context/AuthContext';
+
 function LoginPage() {
   const [identifier, setIdentifier] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const { login } = useContext(AuthContext);
 
   const handleLogin = (e) => {
     e.preventDefault();
     const user = users.find(u => u.id === identifier && u.password === password);
     
     if (user) {
+      login(user); // Store user in context
       console.log(`Logging in as ${user.role}`);
       navigate(`/${user.role}-dashboard`);
     } else {
