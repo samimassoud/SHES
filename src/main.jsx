@@ -14,6 +14,8 @@ import ReactDOM from 'react-dom/client';
 import App from './App.jsx';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
+import { ThemeProvider } from './context/ThemeContext';
+import { LanguageProvider } from './context/LanguageContext';
 
 const router = createBrowserRouter([
   {
@@ -25,8 +27,12 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <AuthProvider>
-    <RouterProvider router={router} />
-    </AuthProvider>
+    <ThemeProvider>
+      <LanguageProvider>
+        <AuthProvider>
+          <RouterProvider router={router} />
+        </AuthProvider>
+      </LanguageProvider>
+    </ThemeProvider>
   </React.StrictMode>
 );

@@ -1,0 +1,17 @@
+:root {
+  --primary-color: #3a8dad;
+  --primary-dark: #2b6d89;
+  --text-primary: #333;
+  --text-secondary: #666;
+  --bg-default: #fff;
+  --bg-paper: #f8f9fa;
+  --border-light: #eee;
+  --error: #ff4d4d;
+}
+
+[data-theme="dark"] {
+  --primary-color: #4da6ff;
+  --text-primary: #f0f0f0;
+  --bg-default: #1a1a1a;
+  --border-light: #444;
+}

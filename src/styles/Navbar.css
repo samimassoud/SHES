@@ -1,7 +1,7 @@
 /* src/components/Navbar.css */
 
 .navbar {
-    background-color: #3a8dad;
+    background-color: var(--primary-color);
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
@@ -12,6 +12,12 @@
   .navbar-logo {
     font-size: 24px;
     font-weight: bold;
+  }
+
+  .navbar-controls {
+  display: flex;
+  align-items: center;
+  gap: 20px;
   }
   
   .navbar-links {
@@ -27,7 +33,7 @@
   }
   
   .navbar-links a {
-    color: white;
+    color: var(--bg-default);
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s ease;
@@ -37,13 +43,29 @@
     color: #ffdd57;
   }
 
-.logout-link {
+/* .logout-link {
   color: #ff4d4d;
   font-weight: 600;
   transition: color 0.2s;
+} */
+.logout-button {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font: inherit;
+  transition-delay:0.5s;
+}
+.logout-button:hover {
+  border: white;
+  border-width: 1px;
+  border-radius: 2px;
 }
 
-.logout-link:hover {
+/* .logout-link:hover {
   color: #ff1a1a;
-}
+} */
   
+.star-rating-fill {
+  background: var(--primary-color); /* Dynamic theming for ratings */
+}

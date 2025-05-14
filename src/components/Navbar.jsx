@@ -5,6 +5,7 @@ import { Link, useLocation } from 'react-router-dom';
 import '../styles/Navbar.css';
 import { AuthContext } from '../context/AuthContext';
 import { doctors } from '../mocks/mockData';
+import ThemeToggle from './core/ThemeToggle';
 
 function Navbar() {
   const location = useLocation();
@@ -26,6 +27,10 @@ function Navbar() {
       <div className="navbar-logo">
         SHES
       </div>
+      <div className="navbar-controls"> {/* New wrapper div */}
+        <ThemeToggle /> {/* Add ThemeToggle */}
+        <LanguageSwitcher /> {/* Add LanguageSwitcher */}
+
       <ul className="navbar-links">
         {isDashboard ? (
           <>
@@ -39,7 +44,10 @@ function Navbar() {
               </li>
             )}
             <li>
-              <Link to="/" className="logout-link " onClick={handleLogout}>Log Out</Link>
+              {/* <Link to="/" className="logout-button " onClick={handleLogout}>Log Out</Link> */}
+              <button onClick={handleLogout} className="logout-button">
+                Log Out
+              </button>
             </li>
           </>
         ) : (
@@ -50,6 +58,7 @@ function Navbar() {
           </>
         )}
       </ul>
+      </div>
     </nav>
   );
 }
