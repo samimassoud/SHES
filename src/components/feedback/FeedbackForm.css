@@ -1,0 +1,36 @@
+.feedback-form {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.star-rating {
+  font-size: 24px;
+  margin: 10px 0;
+}
+
+.star-rating span {
+  cursor: pointer;
+  color: #ccc;
+}
+
+.star-rating .filled {
+  color: gold;
+}
+
+.feedback-form textarea {
+  width: 100%;
+  min-height: 80px;
+  margin: 10px 0;
+  padding: 8px;
+}
+
+.feedback-form button {
+  background: #3a8dad;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}

@@ -46,10 +46,16 @@ function ITDashboard() {
             <h1>Doctor Management</h1>
             <DoctorSearch onDoctorSelect={setSelectedDoctor} />
             {selectedDoctor && (
+              <>
               <DoctorProfileModal
                 doctor={selectedDoctor}
                 onClose={() => setSelectedDoctor(null)}
               />
+              <PerformanceScoreCard
+               doctorId={selectedDoctor.id}
+               onClose={() => setSelectedDoctor(null)}
+                />
+              </>
             )}
           </>
         )}

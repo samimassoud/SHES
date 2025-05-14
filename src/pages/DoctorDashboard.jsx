@@ -4,6 +4,7 @@ import React from 'react';
 import AppointmentCard from '../components/AppointmentCard';
 import '../styles/DoctorDashboard.css';
 import { appointments } from '../mocks/mockData';
+import ApprovalRequestForm from '../components/approvals/ApprovalRequestForm';
 
 function DoctorDashboard() {
   const doctorAppointments = appointments.filter(
@@ -13,7 +14,10 @@ function DoctorDashboard() {
   return (
     <div className="doctor-dashboard-container">
       <h1>Welcome, Doctor</h1>
-
+      <ApprovalRequestForm 
+      userId="2001" // Doctor's ID
+      onSubmit={(request) => console.log('Request:', request)}
+    />
       <div className="cards-grid">
         {appointments.map((appt) => (
           <AppointmentCard

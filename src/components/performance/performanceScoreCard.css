@@ -1,0 +1,28 @@
+.performance-card {
+  background: white;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.performance-card h3 {
+  margin-top: 0;
+  color: #3a8dad;
+}
+
+.metric {
+  display: flex;
+  justify-content: space-between;
+  margin: 12px 0;
+}
+
+.stars {
+  color: gold;
+  font-size: 1.2em;
+}
+
+.stars span {
+  color: #666;
+  font-size: 0.9em;
+  margin-left: 5px;
+}

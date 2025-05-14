@@ -39,6 +39,17 @@ export const users = [
       daysLeft: 15,
       status: "upcoming",
     },
+    {
+      id: 3,
+      patientId: "1002",
+      patientName: "Sara Lee",
+      doctorId: "2001",
+      doctorName: "Dr. Emily Rose",
+      purpose: "Routine Checkup",
+      date: "2024-07-06",
+      daysLeft: 9,
+      status: "upcoming",
+    }
   ];
   
   export const doctors = [
@@ -194,13 +205,21 @@ export const approvalRequests = [
 // Medical History (for MedicalHistorySection.jsx)
 export const medicalHistory = [
   {
-    PatientID: "1001",
     RecordID: 1,
-    Date: "2024-05-01",
+    PatientID: "1001",
+    Date: "2024-01-15",
     Diagnosis: "Hypertension",
-    Prescription: "Lisinopril 10mg",
-    DoctorID: "2001",
+    Prescription: "Lisinopril 10mg daily",
+    DoctorID: "2001"
   },
+  {
+    RecordID: 2,
+    PatientID: "1001",
+    Date: "2023-11-20",
+    Diagnosis: "Common cold",
+    Prescription: "Rest and fluids",
+    DoctorID: "2002"
+  }
 ];
 
 // Localization (for LanguageSwitcher.jsx)
@@ -214,3 +233,10 @@ export const translations = {
     inventory: "المخزون",
   },
 };
+
+export const feedbackQuestions = [
+  "Was your doctor punctual?",
+  "How would you rate the cleanliness?",
+  "Were your concerns addressed?"
+];
+
