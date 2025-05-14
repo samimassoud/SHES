@@ -1,0 +1,22 @@
+.inventory-tracker {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-light);
+}
+
+tr.critical {
+  background-color: #ffebee;
+}
+
+tr:hover {
+  background-color: var(--bg-paper);
+}

@@ -1,0 +1,17 @@
+.inventory-alert {
+  background: #fff8e1;
+  color: #ff6d00;
+  padding: 12px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.alert-item {
+  background: #ffecb3;
+  padding: 4px 8px;
+  border-radius: 4px;
+}

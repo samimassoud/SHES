@@ -268,3 +268,32 @@ input[type="number"]::-webkit-outer-spin-button {
     opacity: 1;
   }
 }
+
+
+/* Tab Styling */
+.dashboard-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.dashboard-tabs button {
+  padding: 10px 20px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  font-weight: 500;
+  color: #666;
+}
+
+.dashboard-tabs button.active {
+  color: #3a8dad;
+  border-bottom-color: #3a8dad;
+}
+
+/* Tab Content */
+.tab-content {
+  padding: 20px 0;
+}
