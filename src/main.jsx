@@ -16,7 +16,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { ThemeProvider } from './context/ThemeContext';
 import { LanguageProvider } from './context/LanguageContext';
-
+import './styles/theme.css'
+import './styles/rtl.css'
 const router = createBrowserRouter([
   {
     path: '*',

@@ -3,8 +3,9 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(to right, #e0f7fa, #f8f9fa);
+    background: linear-gradient(to right, var(--bg-gradient-start), var(--bg-gradient-end));
     min-height: 100vh;
+    color: var(--text-primary); /* Add this for text consistency */
   }
   .login-page-wrapper {
     display: flex;
@@ -12,6 +13,7 @@ body {
     align-items: flex-start;
     padding-top: 50px;
     height: calc(100vh - 70px);
+    background-color: var(--bg-paper);
   }
   
   /* === Container (Glassmorphic Card Style) === */
@@ -20,8 +22,8 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 30px;
-    background: rgba(255, 255, 255, 0.75);
-    backdrop-filter: blur(10px);
+    background: var(--card-bg);
+    color: var(--text-primary);    backdrop-filter: blur(10px);
     border-radius: 16px;
     padding: 40px 30px;
     width: 350px;
@@ -38,7 +40,7 @@ body {
   /* === Heading Style === */
   h2 {
     margin-bottom: 25px;
-    color: #24798a;
+    color: var(--bg-D);
     font-size: 26px;
     font-weight: 600;
   }
@@ -60,19 +62,24 @@ body {
   
   .login-form label {
     margin-bottom: 4px;
-    color: #444;
+    color: var(--text-primary);
     font-size: 14px;
     font-weight: bold;
+        text-align: center; /* Dynamic for RTL/LTR */
+
   }
   .login-form input {
     padding: 12px;
     font-size: 15px;
-    margin-bottom: 12px;
-    background-color: rgba(255, 255, 255, 0.95);
-    border: 1px solid #cbd5e0;
+    background-color: var(--input-bg);
+    color: var(--text-primary);
+    border-color: var(--border-light);    border: 1px solid #cbd5e0;
     border-radius: 8px;
     transition: border 0.3s ease;
     outline: none;
+    text-align: start; /* Dynamic for RTL/LTR */
+    margin: 0 0 12px 0; /* Consistent margins */
+    width: 100%; /* Prevent width changes */
   }
   
   .login-form input:focus {
@@ -101,8 +108,9 @@ body {
   /* === Signup Link === */
   .signup-link {
     margin-top: 20px;
+    color: var(--text-primary);
     font-size: 14px;
-    color: #444;
+    /* font-weight: bold; */
   }
   
   .signup-link a {

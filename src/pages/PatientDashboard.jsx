@@ -7,7 +7,6 @@ import { appointments } from '../mocks/mockData';
 import DiagnosisBot from '../components/diagnosis-bot/DiagnosisBot';
 import ConflictResolver from '../components/scheduling/ConflictResolver';
 import FeedbackForm from '../components/feedback/FeedbackForm';
-import { appointments } from '../mocks/mockData';
 import MedicalHistorySection from '../components/patient/MedicalHistorySection';
 
 function PatientDashboard() {

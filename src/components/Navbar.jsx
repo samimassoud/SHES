@@ -6,7 +6,8 @@ import '../styles/Navbar.css';
 import { AuthContext } from '../context/AuthContext';
 import { doctors } from '../mocks/mockData';
 import ThemeToggle from './core/ThemeToggle';
-
+import LanguageSwitcher from './core/LanguageSwitcher';
+import { useTranslation } from '../hooks/useTranslation'
 function Navbar() {
   const location = useLocation();
   const isDashboard = location.pathname.includes('-dashboard');
@@ -22,6 +23,7 @@ function Navbar() {
     logout();
     // Navigation will be handled by the link
   };
+  const t = useTranslation();
   return (
     <nav className="navbar">
       <div className="navbar-logo">
@@ -52,9 +54,9 @@ function Navbar() {
           </>
         ) : (
           <>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/about">About</Link></li>
-            <li><Link to="/contact">Contact</Link></li>
+            <li><Link to="/">{t('home')}</Link></li>
+            <li><Link to="/about">{t('about')}</Link></li>
+            <li><Link to="/contact">{t('contact')}</Link></li>
           </>
         )}
       </ul>

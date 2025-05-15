@@ -10,9 +10,10 @@ import PatientDashboard from './pages/PatientDashboard.jsx';
 import DoctorDashboard from './pages/DoctorDashboard.jsx';
 import ITDashboard from './pages/ITDashboard.jsx';
 import AdminDashboard from './pages/AdminDashboard.jsx';
-import React from 'react';
+import React, { useEffect } from 'react';
 import Navbar from './components/Navbar.jsx';
 import { Routes, Route } from 'react-router-dom';
+import { useTheme } from './context/ThemeContext';
 
 
 
@@ -27,6 +28,13 @@ import { Routes, Route } from 'react-router-dom';
 // (Later we will import AboutPage, ContactPage, SignupPage too)
 
 function App() {
+
+  const { theme } = useTheme();
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
+  
   return (
     <>
       <Navbar />

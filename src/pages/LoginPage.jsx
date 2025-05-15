@@ -5,6 +5,7 @@ import '../styles/LoginPage.css';
 import { useNavigate } from 'react-router-dom';
 import {users} from '../mocks/mockData';
 import { AuthContext } from '../context/AuthContext';
+import { useTranslation } from '../hooks/useTranslation'
 
 function LoginPage() {
   const [identifier, setIdentifier] = useState('');
@@ -25,17 +26,18 @@ function LoginPage() {
     }
   };
 
+  const t = useTranslation();
   return (
     <div className='login-page-wrapper'>
     <div className="login-container">
-      <h2>Login to SHES</h2>
+      <h2 dir="rtl">{t('login_to_shes')}</h2>
       <form onSubmit={handleLogin} className="login-form">
   <div className="form-group">
-    <label htmlFor="idInput">ID Number</label>
+    <label htmlFor="idInput">{t('id_number')}</label>
     <input
       id="idInput"
       type="text"
-      placeholder="Enter your ID"
+      placeholder={t('enter_id')}
       value={identifier}
       onChange={(e) => setIdentifier(e.target.value)}
       required
@@ -43,22 +45,22 @@ function LoginPage() {
   </div>
 
   <div className="form-group">
-    <label htmlFor="passwordInput">Password</label>
+    <label htmlFor="passwordInput">{t('password')}</label>
     <input
       id="passwordInput"
       type="password"
-      placeholder="Enter your Password"
+      placeholder={t('enter_password')}
       value={password}
       onChange={(e) => setPassword(e.target.value)}
       required
     />
   </div>
 
-  <button type="submit">Login</button>
+  <button type="submit">{t('login')}</button>
 </form>
 
       <p className="signup-link">
-        Don’t have an account? <a href="/signup">Sign up</a>
+        {t('signup_prompt')} <a href="/signup">{t('signup_link')}</a>
       </p>
     </div>
     </div>

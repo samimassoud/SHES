@@ -223,15 +223,71 @@ export const medicalHistory = [
 ];
 
 // Localization (for LanguageSwitcher.jsx)
+// src/translations/index.js
 export const translations = {
   en: {
-    welcome: "Welcome",
-    inventory: "Inventory",
+    home: "Home",
+    about: "About",
+    contact: "Contact",
+    login: "Login",
+    login_to_shes: "Login to SHES",
+    id_number: "ID Number",
+    enter_id: "Enter your ID",
+    password: "Password",
+    enter_password: "Enter your password",
+    submit: "Submit",
+    signup_prompt: "Don't have an account?",
+    signup_link: "Sign up",
+    about_title: "About SHES",
+    about_content: [
+      "The Smart Hospital Enhancement System (SHES) is designed to optimize hospital operations without replacing existing systems.",
+      "SHES focuses on:",
+      "By combining modern technology with gentle integration, SHES empowers hospitals to become smarter and more efficient.",
+      "AI-powered Smart Scheduling",
+        "Optimized Medical Inventory Management",
+        "Doctor Performance Tracking & Evaluation",
+        "Automated Workflow Approvals"
+    ],
+    contact_title: "Contact Us",
+    contact_content: [
+      "For questions or support about SHES, please reach out to our team.",
+      "📧 Email: support@shes-hospital.com",
+      "☎️ Phone: +123 456 7890",
+      "Office Hours: Sunday - Thursday, 8:00 AM - 4:00 PM"
+    ]
+
   },
   ar: {
-    welcome: "مرحباً",
-    inventory: "المخزون",
-  },
+    home: "الرئيسية",
+    about: "من نحن",
+    contact: "اتصل بنا",
+    login: "تسجيل الدخول",
+    login_to_shes: "تسجيل الدخول إلى SHES",
+    id_number: "رقم الحساب",
+    enter_id: "أدخل رقم الحساب",
+    password: "كلمة المرور",
+    enter_password: "أدخل كلمة المرور",
+    submit: "إرسال",
+    signup_prompt: "ليس لديك حساب؟",
+    signup_link: "سجل الآن",
+    about_title: "عن نظام SHES",
+    about_content: [
+      "نظام تحسين المستشفى الذكي (شيز) مصمم لتحسين عمليات المستشفى دون استبدال الأنظمة الحالية.",
+      "يركز SHES على:",
+      "بدمج التكنولوجيا الحديثة مع التكامل السلس، يمكن شيز المستشفيات لتصبح أكثر ذكاءً وكفاءة.",
+      "الجدولة الذكية بالذكاء الاصطناعي",
+      "إدارة مخزون طبي محسنة",
+      "تتبع وتقييم أداء الأطباء",
+      "موافقات سير العمل الآلية"
+    ],
+    contact_title: "اتصل بنا",
+    contact_content: [
+      "للأسئلة أو الدعم الفني حول نظام شيز، يرجى التواصل مع فريقنا.",
+      "📧 البريد الإلكتروني: support@shes-hospital.com",
+      "☎️ الهاتف: +123 456 7890",
+      "ساعات العمل: الأحد إلى الخميس، 8 صباحًا - 4 مساءً"
+    ]
+  }
 };
 
 export const feedbackQuestions = [

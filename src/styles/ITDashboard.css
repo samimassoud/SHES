@@ -176,7 +176,8 @@
 
 .form-group label {
   font-weight: 500;
-  color: #333;
+  color: var(--text-primary);
+    font-size: 14px;
   font-size: 0.95rem;
 }
 

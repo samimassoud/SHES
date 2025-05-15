@@ -1,17 +1,36 @@
 :root {
+  /* Light theme (default) */
   --primary-color: #3a8dad;
   --primary-dark: #2b6d89;
   --text-primary: #333;
   --text-secondary: #666;
   --bg-default: #fff;
   --bg-paper: #f8f9fa;
+  --bg-secondary: #f0f0f0;
   --border-light: #eee;
   --error: #ff4d4d;
+  --card-bg: #ffffffef;
+  --input-bg: #ffffff;
+  --bg-gradient-start: #e0f7fa;
+  --bg-gradient-end: #f8f9fa;
+}
+* {
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 [data-theme="dark"] {
-  --primary-color: #4da6ff;
+  /* Dark theme */
+  --primary-color: #f0f0f0;
+  --primary-dark: #2b6d89;
   --text-primary: #f0f0f0;
-  --bg-default: #1a1a1a;
+  --text-secondary: #b0b0b0;
+  --bg-default: #121212;
+  --bg-paper: #1e1e1e;
+  --bg-secondary: #2d2d2d;
   --border-light: #444;
+  --error: #ff6b6b;
+  --card-bg: #222121;
+  --input-bg: #2d2d2d;
+  --bg-gradient-start: #121212;
+  --bg-gradient-end: #1a1a1a;
 }

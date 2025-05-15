@@ -1,0 +1,39 @@
+/* Navbar RTL Switching ONLY */
+[dir="rtl"] .navbar {
+  direction: rtl;
+}
+
+[dir="rtl"] .navbar-links {
+  padding-right: 0;
+  padding-left: 20px;
+  margin-left: 0;
+  margin-right: auto;
+}
+
+/* Form/Input Preservation */
+[dir="rtl"] .login-container,
+[dir="rtl"] .login-form,
+[dir="rtl"] .form-group {
+  direction: ltr; /* Force LTR layout */
+  text-align: left; /* Force text alignment */
+}
+
+/* RTL Text Input Behavior ONLY */
+[dir="rtl"] .login-form input {
+  text-align: right; /* Arabic text alignment */
+  direction: rtl; /* Right-to-left cursor */
+  padding: 12px !important; /* Maintain exact padding */
+  margin: 0 0 12px 0 !important; /* Maintain margins */
+}
+
+/* Placeholder RTL */
+[dir="rtl"] .login-form input::placeholder {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Logo Protection */
+.navbar-logo {
+  font-weight: normal !important;
+  direction: ltr !important;
+}

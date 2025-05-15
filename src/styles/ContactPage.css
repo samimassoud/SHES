@@ -1,21 +1,29 @@
 /* src/pages/ContactPage.css */
-
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, var(--bg-gradient-start), var(--bg-gradient-end));
+    min-height: 100vh;
+    color: var(--text-primary); /* Add this for text consistency */
+  }
 .contact-container {
     margin: 50px auto;
     max-width: 800px;
     padding: 20px;
-    background-color: #f9f9f9;
+    background: var(--card-bg);
+    color: var(--text-primary);    backdrop-filter: blur(10px);
     border-radius: 10px;
   }
   
   .contact-container h1 {
-    color: #3a8dad;
+    color: var(--bg-D);
     margin-bottom: 20px;
   }
   
   .contact-container p {
     font-size: 16px;
     margin-bottom: 15px;
-    color: #555;
+    color: var(--text-secondary);
   }
   
