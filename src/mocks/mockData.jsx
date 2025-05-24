@@ -61,6 +61,15 @@ export const users = [
       { date: "2024-07-14", time: "09:00" },
       { date: "2024-07-16", time: "11:00" }
     ]
+  },
+  {
+    id: 5,
+    patientId: "1002",
+    doctorId: "2001",
+    doctorName: "Dr. Emily Rose",
+    date: "2024-07-11",
+    status: "completed",
+    delayed: true
   }
   ];
   
@@ -189,10 +198,18 @@ export const patientFeedback = [
     FeedbackID: 2,
     PatientID: "1002",
     DoctorID: "2002",
-    Rating: 4,
+    Rating: 3,
     Comment: "Wait time was a bit long.",
     Date: "2024-06-15",
   },
+  {
+    FeedbackID: 3,
+    PatientID: "1001",
+    DoctorID: "2001",
+    Rating: 5,
+    Comment: "Very thorough examination",
+    Date: "2024-07-12"
+  }
 ];
 
 export const approvalRequests = [
