@@ -116,3 +116,21 @@
   align-items: center;
   z-index: 1000;
 }
+
+/*
+.status-badge {
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 0.8em;
+}
+
+.status-badge.completed {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.status-badge.upcoming {
+  background: #fff8e1;
+  color: #ff6d00;
+}
+*/

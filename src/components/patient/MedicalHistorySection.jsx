@@ -3,6 +3,15 @@ import { medicalHistory, doctors } from '../../mocks/mockData';
 import './MedicalHistorySection.css';
 
 function MedicalHistorySection({ patientId }) {
+  /*
+  if (viewMode === 'doctor') {
+  // Verify the doctor has current appointments with this patient
+  const hasValidAccess = props.validateAccess && props.validateAccess();
+  if (!hasValidAccess) {
+    return <div className="access-denied">Access to medical history not authorized</div>;
+  }
+}
+  */
   const [records, setRecords] = useState([]);
   const [filter, setFilter] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');

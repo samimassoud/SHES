@@ -21,7 +21,12 @@ function AppointmentCard({
   const getOptions = () => {
     switch (role) {
       case "doctor":
-        return ["Mark as Completed", "Reschedule"];
+        return [
+        status === 'upcoming' && "Mark as Completed",
+        "View Medical History",
+        "Reschedule",
+        "Add Notes"
+      ].filter(Boolean);
       case "patient":
         return hasConflict
         ? ["View New Slot", "Keep Current"]
@@ -54,6 +59,11 @@ function AppointmentCard({
         {daysLeft !== "N/A" && (
           <p className="appointment-days-left">Days Left: {daysLeft}</p>
         )}
+        {/*<div className="appointment-status">
+  <span className={`status-badge ${status}`}>
+    {status === 'completed' ? '✓ Completed' : 'Upcoming'}
+  </span>
+</div> */}
       </div>
 
       {expanded && (
@@ -62,7 +72,11 @@ function AppointmentCard({
             <button
               key={index}
               className="option-button"
-              onClick={(e) => e.stopPropagation()}
+              onClick={(e) => { e.stopPropagation();
+                if (option === "View Medical History" && onViewHistory) {
+                  onViewHistory();
+                }
+              }}
             >
               {option}
             </button>
@@ -80,7 +94,8 @@ AppointmentCard.propTypes = {
   daysLeft: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   options: PropTypes.arrayOf(PropTypes.string),
   hasConflict: PropTypes.bool,
-  onConflictClick: PropTypes.func
+  onConflictClick: PropTypes.func,
+  onViewHistory: PropTypes.func
 };
 
 export default AppointmentCard;

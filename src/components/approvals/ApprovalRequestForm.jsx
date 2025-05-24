@@ -42,6 +42,9 @@ function ApprovalRequestForm({ userId, userRole, onSubmit }) {
       requestType,
       requesterId: userId,
       requestDate: new Date().toISOString(),
+      requesterName: userRole === 'doctor' 
+      ? doctors.find(d => d.id === userId)?.name
+      : 'IT Department',
       status: 'pending'
     };
 

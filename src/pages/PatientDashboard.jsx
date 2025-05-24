@@ -13,15 +13,36 @@ function PatientDashboard() {
   
   const [conflicts, setConflicts] = useState([]);
   const [selectedAppointment, setSelectedAppointment] = useState(null);
+  const [completedAppointments, setCompletedAppointments] = useState([]);
 
   // Mock conflict detection - replace with real data
+  // useEffect(() => {
+  //   const mockConflicts = appointments.filter(
+  //     appt => appt.patientId === "1001" && 
+  //     appt.status === 'conflict'
+  //   );
+  //   setConflicts(mockConflicts);
+  // }, []);
   useEffect(() => {
-    const mockConflicts = appointments.filter(
-      appt => appt.patientId === "1001" && 
-      appt.status === 'conflict'
-    );
-    setConflicts(mockConflicts);
+  const completed = appointments.filter(
+    appt => appt.patientId === "1001" && 
+    appt.status === 'completed'
+  );
+  setCompletedAppointments(completed);
   }, []);
+
+  const handleFeedbackSubmit = async (feedbackData) => {
+  try {
+    // In a real app, this would be an API call
+    console.log('Submitting feedback:', feedbackData);
+    
+    // Update mock data or state as needed
+    setSelectedAppointment(null);
+    alert('Thank you for your feedback!');
+  } catch (error) {
+    console.error('Feedback submission failed:', error);
+  }
+};
 
   const handleConflictResolution = (resolution) => {
     console.log('Handling resolution:', resolution);
@@ -74,14 +95,12 @@ function PatientDashboard() {
       )}
 
       {/* Feedback Form (for existing appointments) */}
-      {selectedAppointment && (
+      {selectedAppointment && 
+        completedAppointments.some(appt => appt.id === selectedAppointment.id) && (
         <div className="feedback-section">
           <FeedbackForm 
             appointmentId={selectedAppointment.id} 
-            onSubmit={(feedback) => {
-              console.log('Feedback:', feedback);
-              setSelectedAppointment(null);
-            }}
+            onSubmit={handleFeedbackSubmit}
           />
         </div>
       )}

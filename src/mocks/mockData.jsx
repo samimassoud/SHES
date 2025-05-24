@@ -35,9 +35,9 @@ export const users = [
       doctorId: "2001",
       doctorName: "Dr. Adam Blake",
       purpose: "Follow-up Consultation",
-      date: "2024-07-12",
-      daysLeft: 15,
-      status: "upcoming",
+      completedAt: "2024-07-06T10:30:00Z", // New field
+      daysLeft: 0,
+      status: "completed",
     },
     {
       id: 3,
@@ -217,12 +217,13 @@ export const approvalRequests = [
     requestId: "req_001",
     requestType: "absence",
     requesterId: "2001", // Dr. Emily Rose
+    requesterName: "Dr. Emily Rose",
     requestDate: "2024-03-10T09:30:00Z",
     status: "pending",
     absenceDetails: {
       doctorId: "2001",
       dates: ["2024-04-15", "2024-04-16"],
-      reason: "Medical conference attendance"
+      reason: "Medical conference"
     }
   },
   {
@@ -236,7 +237,7 @@ export const approvalRequests = [
         { ItemID: 1, ItemName: "IV Fluids", RequestedQty: 50, Unit: "Bottle" },
         { ItemID: 2, ItemName: "Surgical Masks", RequestedQty: 20, Unit: "Box" }
       ],
-      reason: "Quarterly restocking"
+      reason: "Low stock"
     }
   }
 ];

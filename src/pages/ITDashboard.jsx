@@ -15,6 +15,19 @@ import EventCalendar from '../components/inventory/EventCalendar';
 function ITDashboard() {
   const [selectedDoctor, setSelectedDoctor] = useState(null);
   const [activeTab, setActiveTab] = useState('doctors'); // Initialize active tab
+  const handleSupplyRequest = async (requestData) => {
+  try {
+      console.log('Submitting supply request:', requestData);
+      
+      // In real app:
+      // const response = await api.post('/approvals/supplies', requestData);
+      
+      alert('Supply request submitted for approval');
+    } catch (error) {
+      console.error('Supply request failed:', error);
+      alert('Failed to submit supply request');
+    }
+  };
 
   return (
     <div className="it-dashboard-container">
@@ -80,27 +93,37 @@ function ITDashboard() {
         )}
 
         {activeTab === 'inventory' && (
-          <div className="inventory-management">
-            <h1>Inventory Management</h1>
-            
-            {/* Real-time alerts at the top */}
-            <InventoryAlertBanner />
-            
-            {/* Main inventory grid */}
-            <div className="inventory-grid">
-              {/* Left column - Events and Planning */}
-              <div className="inventory-sidebar">
-                <EventCalendar />
-                <SmartPlanGenerator />
-              </div>
+            <div className="inventory-management">
+              <h1>Inventory Management</h1>
               
-              {/* Right column - Main inventory table */}
-              <div className="inventory-main">
-                <InventoryTracker />
+              {/* Real-time alerts at the top */}
+              <InventoryAlertBanner />
+              
+              {/* Request form should be before the main grid */}
+              <div className="inventory-actions">
+                <ApprovalRequestForm
+                  userId="4001" // IT staff ID
+                  userRole="it"
+                  onSubmit={handleSupplyRequest}
+                  requestType="supply" // Force supply mode
+                />
+              </div>
+
+              {/* Main inventory grid */}
+              <div className="inventory-grid">
+                {/* Left column - Events and Planning */}
+                <div className="inventory-sidebar">
+                  <EventCalendar />
+                  <SmartPlanGenerator />
+                </div>
+                
+                {/* Right column - Main inventory table */}
+                <div className="inventory-main">
+                  <InventoryTracker />
+                </div>
               </div>
             </div>
-          </div>
-        )}
+          )}
       </div>
     </div>
   );
