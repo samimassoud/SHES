@@ -11,6 +11,7 @@ import InventoryAlertBanner from '../components/inventory/InventoryAlertBanner';
 import InventoryTracker from '../components/inventory/InventoryTracker';
 import SmartPlanGenerator from '../components/inventory/SmartPlanGenerator';
 import EventCalendar from '../components/inventory/EventCalendar';
+import ApprovalRequestForm from '../components/approvals/ApprovalRequestForm';
 
 function ITDashboard() {
   const [selectedDoctor, setSelectedDoctor] = useState(null);

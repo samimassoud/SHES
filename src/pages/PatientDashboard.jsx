@@ -1,9 +1,9 @@
 // src/pages/PatientDashboard.js
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AppointmentCard from '../components/AppointmentCard';
 import '../styles/PatientDashboard.css';
-import { appointments } from '../mocks/mockData';
+import { appointments as patientAppointments } from '../mocks/mockData';
 import DiagnosisBot from '../components/diagnosis-bot/DiagnosisBot';
 import ConflictResolver from '../components/scheduling/ConflictResolver';
 import FeedbackForm from '../components/feedback/FeedbackForm';
@@ -24,7 +24,7 @@ function PatientDashboard() {
   //   setConflicts(mockConflicts);
   // }, []);
   useEffect(() => {
-  const completed = appointments.filter(
+  const completed = patientAppointments.filter(
     appt => appt.patientId === "1001" && 
     appt.status === 'completed'
   );

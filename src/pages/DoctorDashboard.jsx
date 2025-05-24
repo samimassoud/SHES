@@ -1,6 +1,6 @@
 // src/pages/DoctorDashboard.js
 
-import React from 'react';
+import React, {useState} from 'react';
 import AppointmentCard from '../components/AppointmentCard';
 import '../styles/DoctorDashboard.css';
 import { appointments, medicalHistory } from '../mocks/mockData';

@@ -4,8 +4,8 @@ import React, {useState, useEffect} from 'react';
 import AppointmentCard from '../components/AppointmentCard'; // Reusing again!
 import '../styles/AdminDashboard.css';
 import { doctors } from '../mocks/mockData';
-import { useState } from 'react';
 import ApprovalRequestForm from '../components/approvals/ApprovalRequestForm';
+import PerformanceScoreCard from '../components/performance/performanceScoreCard';
 import { approvalRequests } from '../mocks/mockData';
 
 function AdminDashboard() {
