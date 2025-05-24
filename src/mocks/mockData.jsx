@@ -49,7 +49,19 @@ export const users = [
       date: "2024-07-06",
       daysLeft: 9,
       status: "upcoming",
-    }
+    },
+    {
+    id: 4,
+    patientId: "1001",
+    doctorId: "2001",
+    status: "conflict", // New status
+    conflictReason: "doctor_availability_change",
+    originalDate: "2024-07-15",
+    newAvailableSlots: [
+      { date: "2024-07-14", time: "09:00" },
+      { date: "2024-07-16", time: "11:00" }
+    ]
+  }
   ];
   
   export const doctors = [

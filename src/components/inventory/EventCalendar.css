@@ -15,3 +15,9 @@
 .event-name {
   font-weight: 500;
 }
+.event-highlight {
+  margin-top: 12px;
+  padding: 8px;
+  background: #e3f2fd;
+  border-radius: 4px;
+}

@@ -2,7 +2,15 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import '../styles/AppointmentCard.css';
 
-function AppointmentCard({ title, subtitle, date, daysLeft, role }) {
+function AppointmentCard({ 
+  title, 
+  subtitle, 
+  date, 
+  daysLeft, 
+  role,
+  hasConflict,
+  onConflictClick
+}) {
   const [expanded, setExpanded] = useState(false);
 
   const toggleExpand = () => {
@@ -15,7 +23,9 @@ function AppointmentCard({ title, subtitle, date, daysLeft, role }) {
       case "doctor":
         return ["Mark as Completed", "Reschedule"];
       case "patient":
-        return ["Cancel Appointment", "Request Reschedule"];
+        return hasConflict
+        ? ["View New Slot", "Keep Current"]
+        : ["Cancel Appointment", "Reschedule"];
       case "admin":
         return ["Require a Revision", "View Schedule"];
       case "it":
@@ -28,7 +38,8 @@ function AppointmentCard({ title, subtitle, date, daysLeft, role }) {
   const options = getOptions();
   return (
     <div 
-      className={`appointment-card ${expanded ? 'expanded' : ''}`}
+      className={`appointment-card ${expanded ? 'expanded' : ''} 
+      ${hasConflict ? 'has-conflict' : ''}`}
       onClick={toggleExpand}
       role="button"
       tabIndex="0"
@@ -37,6 +48,7 @@ function AppointmentCard({ title, subtitle, date, daysLeft, role }) {
     >
       <div className="appointment-card-content">
         <h3>{title}</h3>
+        {hasConflict && <div className="conflict-badge">New Slot Available!</div>}
         <p className="appointment-subtitle">{subtitle}</p>
         <p className="appointment-date">Date: {date}</p>
         {daysLeft !== "N/A" && (
@@ -67,6 +79,8 @@ AppointmentCard.propTypes = {
   date: PropTypes.string.isRequired,
   daysLeft: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   options: PropTypes.arrayOf(PropTypes.string),
+  hasConflict: PropTypes.bool,
+  onConflictClick: PropTypes.func
 };
 
 export default AppointmentCard;

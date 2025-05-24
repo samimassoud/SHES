@@ -15,3 +15,10 @@
   padding: 4px 8px;
   border-radius: 4px;
 }
+.toggle-btn {
+  background: none;
+  border: none;
+  color: #ff6d00;
+  cursor: pointer;
+  margin-left: auto;
+}

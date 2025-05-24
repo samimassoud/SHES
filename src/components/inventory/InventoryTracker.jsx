@@ -22,7 +22,9 @@ function InventoryTracker() {
               <td>{item.ItemName}</td>
               <td>{item.Category}</td>
               <td>{item.QuantityInStock} {item.Unit}</td>
-              <td>{isItemCritical(item) ? '⚠️ Low' : '✅ OK'}</td>
+              <td title={`Reorder at ${item.ReorderThreshold} ${item.Unit}`}>
+                {isItemCritical(item) ? '⚠️ Low' : '✅ OK'}
+              </td>
               <td>{calculateSuggestedQty(item)} {item.Unit}</td>
             </tr>
           ))}

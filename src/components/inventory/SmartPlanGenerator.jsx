@@ -1,20 +1,21 @@
 import React, { useState } from 'react';
-import { warehouseItems, events } from '../../mocks/mockData';
+import { warehouseItems } from '../../mocks/mockData';
 import { getEventCriticalItems, calculateSuggestedQty } from './inventoryLogic';
-import './SmartPlanGenerator.css';
 
 function SmartPlanGenerator() {
   const [includeEvents, setIncludeEvents] = useState(true);
+  const [restockPlan, setRestockPlan] = useState([]);
 
   const generatePlan = () => {
     const itemsToRestock = includeEvents
-      ? [...warehouseItems.filter(item => item.CriticalDuringEvents.length > 0)]
+      ? [...new Set([...warehouseItems.filter(item => item.CriticalDuringEvents?.length > 0)])]
       : [...warehouseItems];
 
-    return itemsToRestock.map(item => ({
+    const plan = itemsToRestock.map(item => ({
       ...item,
-      SuggestedQty: calculateSuggestedQty(item),
+      SuggestedQty: calculateSuggestedQty(item, new Date().getMonth() + 1), // Current month
     }));
+    setRestockPlan(plan);
   };
 
   return (
@@ -28,9 +29,17 @@ function SmartPlanGenerator() {
         />
         Include Event-Based Items
       </label>
-      <button onClick={() => console.log(generatePlan())}>
-        Generate Plan
-      </button>
+      <button onClick={generatePlan}>Generate Plan</button>
+      
+      {restockPlan.length > 0 && (
+        <ul className="plan-list">
+          {restockPlan.map(item => (
+            <li key={item.ItemID}>
+              {item.ItemName}: {item.SuggestedQty} {item.Unit}
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }

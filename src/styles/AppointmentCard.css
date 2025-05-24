@@ -80,3 +80,39 @@
   height: 2px;
   background: #3a8dad; /* Accent underline */
 }
+
+/* AppointmentCard.css additions */
+.appointment-card.has-conflict {
+  border-left: 4px solid #FFA000;
+  animation: pulse 2s infinite;
+}
+
+.conflict-badge {
+  background: #FFA000;
+  color: white;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 0.8em;
+  display: inline-block;
+  margin-left: 10px;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(255,160,0,0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(255,160,0,0); }
+  100% { box-shadow: 0 0 0 0 rgba(255,160,0,0); }
+}
+
+/* Conflict modal positioning */
+.conflict-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}

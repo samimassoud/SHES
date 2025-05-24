@@ -11,9 +11,23 @@ import MedicalHistorySection from '../components/patient/MedicalHistorySection';
 
 function PatientDashboard() {
   
-  const patientAppointments = appointments.filter(
-    appt => appt.patientId === "1001" // Replace with logged-in patient's ID
-  );
+  const [conflicts, setConflicts] = useState([]);
+  const [selectedAppointment, setSelectedAppointment] = useState(null);
+
+  // Mock conflict detection - replace with real data
+  useEffect(() => {
+    const mockConflicts = appointments.filter(
+      appt => appt.patientId === "1001" && 
+      appt.status === 'conflict'
+    );
+    setConflicts(mockConflicts);
+  }, []);
+
+  const handleConflictResolution = (resolution) => {
+    console.log('Handling resolution:', resolution);
+    // Update backend + local state
+    setConflicts(conflicts.filter(c => c.id !== resolution.originalAppointment.id));
+  };
 
   const handleBookAppointment = (specialty) => {
     // Logic to filter doctors by specialty
@@ -28,7 +42,9 @@ function PatientDashboard() {
       <DiagnosisBot onBookAppointment={handleBookAppointment} />
       <MedicalHistorySection patientId="1001" /> 
       <div className="cards-grid">
-        {patientAppointments.map((appt) => (
+        {patientAppointments.map((appt) => {
+          const hasConflict = conflicts.some(c => c.doctorId === appt.doctorId);
+          return (
           <AppointmentCard
             key={appt.id}
             title={appt.doctorName}
@@ -36,19 +52,24 @@ function PatientDashboard() {
             date={appt.date}
             daysLeft={appt.daysLeft}
             role="patient"
-            onClick={() => setSelectedAppointment(appt)} // Add click handler
+            onClick={() => {
+                if (hasConflict) {
+                  setSelectedAppointment(appt);
+                }
+              }}
           />
-        ))}
+            );
+        })}
       </div>
 
       {/* Conflict Resolver (for new bookings) */}
-      {selectedSlot && (
+      {selectedAppointment 
+      && conflicts.some(c => c.doctorId === selectedAppointment.doctorId) 
+       && (
         <ConflictResolver 
-          selectedSlot={selectedSlot}
-          onResolve={(resolution) => {
-            console.log('Resolution:', resolution);
-            setSelectedSlot(null);
-          }}
+          appointment={selectedAppointment}
+          onResolve={handleConflictResolution}
+          onClose={() => setSelectedAppointment(null)}
         />
       )}
 

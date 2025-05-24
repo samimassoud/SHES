@@ -4,6 +4,7 @@ import '../styles/ITDashboard.css';
 import { signupRequests } from '../mocks/mockData';
 import DoctorProfileModal from '../components/DoctorProfileModal';
 import DoctorSearch from '../components/search/DoctorSearch';
+import PerformanceScoreCard from '../components/performance/performanceScoreCard';
 
 // Inventory Components
 import InventoryAlertBanner from '../components/inventory/InventoryAlertBanner';
@@ -79,13 +80,26 @@ function ITDashboard() {
         )}
 
         {activeTab === 'inventory' && (
-          <>
+          <div className="inventory-management">
             <h1>Inventory Management</h1>
+            
+            {/* Real-time alerts at the top */}
             <InventoryAlertBanner />
-            <EventCalendar />
-            <InventoryTracker />
-            <SmartPlanGenerator />
-          </>
+            
+            {/* Main inventory grid */}
+            <div className="inventory-grid">
+              {/* Left column - Events and Planning */}
+              <div className="inventory-sidebar">
+                <EventCalendar />
+                <SmartPlanGenerator />
+              </div>
+              
+              {/* Right column - Main inventory table */}
+              <div className="inventory-main">
+                <InventoryTracker />
+              </div>
+            </div>
+          </div>
         )}
       </div>
     </div>
