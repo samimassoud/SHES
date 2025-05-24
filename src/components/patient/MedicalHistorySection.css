@@ -1,19 +1,190 @@
 .medical-history {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin-top: 30px;
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
-.medical-history table {
-  width: 100%;
-  border-collapse: collapse;
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 15px;
 }
 
-.medical-history th, 
-.medical-history td {
-  padding: 12px;
-  text-align: left;
-  border-bottom: 1px solid #eee;
+.controls {
+  display: flex;
+  gap: 15px;
+  align-items: center;
 }
 
-.medical-history th {
-  background-color: #f5f5f5;
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filter-group label {
+  font-weight: 500;
+  color: #555;
+}
+
+.filter-select, .search-input {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.search-input {
+  min-width: 200px;
+}
+
+.no-records {
+  text-align: center;
+  color: #777;
+  padding: 20px;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.timeline-item {
+  border: 1px solid #eee;
+  border-radius: 6px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.timeline-item.expanded {
+  border-color: #3a8dad;
+  box-shadow: 0 2px 8px rgba(58, 141, 173, 0.2);
+}
+
+.timeline-header {
+  display: flex;
+  align-items: center;
+  padding: 12px 15px;
+  background: #f9f9f9;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.timeline-header:hover {
+  background: #f0f0f0;
+}
+
+.timeline-date {
+  min-width: 100px;
+  color: #3a8dad;
+  font-weight: 500;
+}
+
+.timeline-title {
+  flex: 1;
+  padding: 0 15px;
+}
+
+.timeline-title h4 {
+  margin: 0;
+  color: #333;
+}
+
+.doctor-name {
+  font-size: 0.85em;
+  color: #666;
+}
+
+.timeline-arrow {
+  font-size: 0.9em;
+  color: #777;
+}
+
+.timeline-details {
+  padding: 15px;
+  background: white;
+  border-top: 1px solid #eee;
+}
+
+.detail-row {
+  display: flex;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.detail-label {
+  font-weight: 500;
+  min-width: 100px;
+  color: #555;
+}
+
+.detail-value {
+  flex: 1;
+  color: #333;
+}
+
+.detail-value.notes {
+  white-space: pre-line;
+}
+
+.attachments {
+  margin-top: 15px;
+}
+
+.attachment-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 5px;
+}
+
+.attachment-item {
+  display: inline-block;
+  padding: 5px 10px;
+  background: #f0f7fa;
+  border-radius: 4px;
+  color: #3a8dad;
+  text-decoration: none;
+  font-size: 0.85em;
+  transition: all 0.2s;
+}
+
+.attachment-item:hover {
+  background: #e0eef5;
+  text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .history-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .controls {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .filter-group, .search-input {
+    width: 100%;
+  }
+  
+  .timeline-header {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .timeline-date {
+    min-width: 0;
+    width: 100%;
+  }
 }

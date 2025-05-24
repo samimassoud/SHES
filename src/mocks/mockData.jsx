@@ -236,18 +236,36 @@ export const medicalHistory = [
   {
     RecordID: 1,
     PatientID: "1001",
+    DoctorID: "2001",
     Date: "2024-01-15",
-    Diagnosis: "Hypertension",
-    Prescription: "Lisinopril 10mg daily",
-    DoctorID: "2001"
+    RecordType: "diagnosis",
+    Diagnosis: "Hypertension Stage 1",
+    Prescription: "Lisinopril 10mg daily, monitor BP weekly",
+    Notes: "Patient advised to reduce sodium intake and exercise regularly",
+    Attachments: [
+      { name: "Bloodwork Results.pdf", url: "#" },
+      { name: "EKG_Report.jpg", url: "#" }
+    ]
   },
   {
     RecordID: 2,
     PatientID: "1001",
+    DoctorID: "2002",
     Date: "2023-11-20",
-    Diagnosis: "Common cold",
-    Prescription: "Rest and fluids",
-    DoctorID: "2002"
+    RecordType: "treatment",
+    Diagnosis: "Acute Pharyngitis",
+    Prescription: "Amoxicillin 500mg TID for 7 days",
+    Notes: "Viral panel negative, throat culture positive for Group A Strep"
+  },
+  {
+    RecordID: 3,
+    PatientID: "1001",
+    DoctorID: "2001",
+    Date: "2023-09-05",
+    RecordType: "vaccination",
+    Diagnosis: "Influenza Vaccination",
+    Prescription: "Fluzone Quadrivalent 2023-2024",
+    Notes: "No adverse reactions observed"
   }
 ];
 
