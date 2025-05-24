@@ -214,21 +214,31 @@ export const patientFeedback = [
 
 export const approvalRequests = [
   {
-    RequestID: 1,
-    Type: "Absence",
-    DoctorID: "2001",
-    DoctorName: "Dr. Emily Rose",
-    Dates: ["2025-07-10", "2025-07-11"],
-    Status: "Pending",
+    requestId: "req_001",
+    requestType: "absence",
+    requesterId: "2001", // Dr. Emily Rose
+    requestDate: "2024-03-10T09:30:00Z",
+    status: "pending",
+    absenceDetails: {
+      doctorId: "2001",
+      dates: ["2024-04-15", "2024-04-16"],
+      reason: "Medical conference attendance"
+    }
   },
   {
-    RequestID: 2,
-    Type: "Supply Order",
-    ItemID: 1, // IV Fluids
-    Quantity: 100,
-    RequestedBy: "4001", // IT Staff
-    Status: "Pending",
-  },
+    requestId: "req_002",
+    requestType: "supply",
+    requesterId: "4001", // IT Staff
+    requestDate: "2024-03-12T14:15:00Z",
+    status: "approved",
+    supplyDetails: {
+      items: [
+        { ItemID: 1, ItemName: "IV Fluids", RequestedQty: 50, Unit: "Bottle" },
+        { ItemID: 2, ItemName: "Surgical Masks", RequestedQty: 20, Unit: "Box" }
+      ],
+      reason: "Quarterly restocking"
+    }
+  }
 ];
 
 // Medical History (for MedicalHistorySection.jsx)
